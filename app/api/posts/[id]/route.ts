@@ -1,10 +1,15 @@
 import { IPost } from "types";
-import { posts } from "../../mockData";
 import { NextResponse } from "next/server";
+import path from "path";
+import fs from "fs";
 
-export async function GET(req: Request) {
+export function GET(req: Request) {
   const id = req.url.slice(req.url.lastIndexOf("/") + 1);
-  const filtered = posts.filter((p: IPost) => String(p.id) === id);
+  const filePath = path.join(process.cwd(), "app/api", "mockData.json");
+  const jsonData = fs.readFileSync(filePath, "utf-8");
+  const filtered = JSON.parse(jsonData).filter(
+    (p: IPost) => p.id.toString() === id
+  );
 
   return filtered.length > 0
     ? NextResponse.json(filtered[0])
