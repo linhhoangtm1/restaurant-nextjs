@@ -36,5 +36,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 Link demo: https://restaurant-ui-tau.vercel.app/
 
 Using auth0 (free account to implement authentication)
+
 account: abc@gmail.com
+
 password: abc123!@#
